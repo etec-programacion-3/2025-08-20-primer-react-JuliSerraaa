@@ -20,10 +20,11 @@ const App = () => {
   const handleAddTask = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      axios.post('http://localhost:3001/tasks', { title })
+      axios.post('http://localhost:3001/tasks', { title, description })
         .then(response => {
           setTasks([...tasks, response.data]);
           setTitle('');
+          setDesc('');
         })
         .catch(error => {
           console.error('Error adding task:', error);
